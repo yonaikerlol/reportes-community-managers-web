@@ -15,10 +15,7 @@ class AutomaticReportsController extends Controller
     {
         $reports = [];
 
-        foreach (
-            scandir(getenv("BOT_OUTPUT_PATH"))
-            as $file
-        ) {
+        foreach (scandir(getenv("BOT_OUTPUT_PATH")) as $file) {
             if ($file === "." || $file === "..") {
                 // Skip directories "." and ".."
                 continue;
