@@ -16,7 +16,7 @@ class AutomaticReportsController extends Controller
         $reports = [];
 
         foreach (
-            scandir(getenv("BOT_OUTPUT_PATH"), SCANDIR_SORT_DESCENDING)
+            scandir(getenv("BOT_OUTPUT_PATH"))
             as $file
         ) {
             if ($file === "." || $file === "..") {
