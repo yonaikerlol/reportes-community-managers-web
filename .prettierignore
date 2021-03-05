@@ -1,0 +1,7 @@
+vendor
+public/js/dist
+public/js/vendor
+public/css/dist
+storage/*
+routes/*
+webpack.mix.js

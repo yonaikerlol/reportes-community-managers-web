@@ -1,0 +1,40 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run production
+
+      - name: Deploy to the Server
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: 51.79.18.72
+          username: copeiorg_git@copei.org.ve
+          password: l*N"7re<m&nZ`UySMg
+          server-dir: ./reportes-community-managers-web/
