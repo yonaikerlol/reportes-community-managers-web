@@ -27,7 +27,7 @@ class AutomaticReportsController extends Controller
             }
 
             // Extract the report date from the filename.
-            $reportDate = explode(".", $file)[0];
+            $reportDate = pathinfo($file, PATHINFO_FILENAME);
 
             // Push it to the output array.
             array_push($reports, $reportDate);
