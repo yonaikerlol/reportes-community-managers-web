@@ -74,8 +74,7 @@ class AutomaticReportsController extends Controller
     {
         $reports = $this->getReports($page);
 
-        return view("automatic-report.showPage")
-            ->withReports($reports);
+        return view("automatic-report.showPage")->withReports($reports);
     }
 
     /**
