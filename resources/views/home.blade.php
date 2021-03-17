@@ -74,7 +74,7 @@
             </thead>
 
             <tbody>
-                @foreach ($automaticReports as $report)
+                @foreach ($automaticReports["reports"] as $report)
                     <tr>
                         <td>{{ $report }}</td>
                         <td>
@@ -84,5 +84,40 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="d-flex flex-justify-center" style="flex-wrap:wrap;margin-top:30px">
+            @php
+                $pageLimit = 9;
+                $pageRate = 0;
+            @endphp
+
+            @for ($page = $automaticReports["pagination"]["currentPage"]; $page <= $automaticReports["pagination"]["totalPages"]; $page++)
+                @if ($page == $automaticReports["pagination"]["currentPage"])
+                    @continue
+                @endif
+
+                <a class="waves-effect waves-light btn" href="{{ route('automaticReport.showPage', $page) }}">
+                    {{ $page }}
+                </a>
+
+                @if ($pageRate == $pageLimit)
+                    <a class="waves-effect waves-light btn disabled" href="#">...</a>
+
+                    @break
+                @endif
+
+                @php
+                    $pageRate++;
+                @endphp
+            @endfor
+        </div>
+
+        <p class="grey-text text-darken-2 center">
+            Reportes Totales:
+
+            <strong>
+                {{ $automaticReports["pagination"]["totalReports"] }}
+            </strong>
+        </p>
     </div>
 @endsection

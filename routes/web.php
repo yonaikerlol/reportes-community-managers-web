@@ -46,6 +46,12 @@ Route::prefix("reportes/automaticos")->group(function () {
         ->where([
             "date" => "[0-9]{2}-[0-9]{2}-[0-9]{4}",
         ]);
+
+    Route::get("/pagina/{page}", "AutomaticReportsController@showPage")
+        ->name("automaticReport.showPage")
+        ->where([
+            "page" => "[0-9]+",
+        ]);
 });
 
 /*
