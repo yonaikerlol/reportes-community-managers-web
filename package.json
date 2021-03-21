@@ -16,5 +16,18 @@
         "laravel-mix": "^5.0.1",
         "prettier": "^2.2.1",
         "vue-template-compiler": "^2.6.12"
+    },
+    "browserslist": {
+        "production": [
+            ">0.5%",
+            "last 2 versions",
+            "Firefox ESR",
+            "not dead"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }
