@@ -16,7 +16,7 @@ nav .material-icons {
 }
 
 main {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
 }
 
 main .container {
